@@ -10,6 +10,29 @@
 
 \version "2.24.0"
 
+\include "roman-numerals.ly"
+
+#(define ALL-TONICS
+    (list
+      #{ c #}
+      #{ a #}
+      #{ g #}
+      #{ e #}
+      #{ d #}
+    ))
+
+#(define DEFAULT-LAYOUT
+   #{
+      \layout {
+        \context {
+          \ChordNames
+          chordNameLowercaseMinor = ##t
+          chordChanges = ##t
+          \consists #romanNumeralChordEngraver
+        }
+      }
+   #})
+
 % Motified from scm/lily/lily-library.scm::get-outfile-name.
 #(define get-outfile-name (define-scheme-function
   (ext) (string?)
@@ -94,17 +117,10 @@
    (let ((new-music #{ \transpose $orig-tonic $new-tonic $music #} ))
         (make-book title new-music output ext))))
 
-#(define all-tonics
-    (list
-      #{ c #}
-      #{ g #}
-      #{ d #}
-    ))
-
-makeEtude = #(define-scheme-function
+make-etude = #(define-scheme-function
   (title melody harmony orig-tonic score-output midi-output)
   (string? ly:music? ly:music? (ly:pitch? #{c#})
-   (ly:output-def? #{\layout{}#}) (ly:output-def? #{\midi{}#}))
+   (ly:output-def? DEFAULT-LAYOUT) (ly:output-def? #{\midi{}#}))
 
   ; Create MIDI tracks in common keys for melody and harmony.
   (for-each
@@ -116,7 +132,7 @@ makeEtude = #(define-scheme-function
            (make-transposed-book harmony-title harmony orig-tonic tonic midi-output "midi")
            (make-transposed-book etude-title #{<< $harmony $melody >>#} orig-tonic tonic midi-output "midi")
       ))
-    all-tonics)
+    ALL-TONICS)
 
   ; Create scores for the entire etude.
   (make-book title #{<< $harmony $melody >>#} score-output "score"))
