@@ -89,9 +89,9 @@
 % #(ly:message "~a" (make-title-text "Foo" #{ c #} #{ d #} #f #t))
 
 #(define make-transposed-book (define-scheme-function
-   (title music tonic output ext)
-   (string? ly:music? ly:pitch? ly:output-def? string?)
-   (let ((new-music (ly:music-transpose music tonic)))
+   (title music orig-tonic new-tonic output ext)
+   (string? ly:music? ly:pitch? ly:pitch? ly:output-def? string?)
+   (let ((new-music #{ \transpose $orig-tonic $new-tonic $music #} ))
         (make-book title new-music output ext))))
 
 #(define all-tonics
@@ -112,12 +112,11 @@ makeEtude = #(define-scheme-function
       (let ((melody-title (make-title-text title orig-tonic tonic #t #f))
             (harmony-title (make-title-text title orig-tonic tonic #f #t))
             (etude-title (make-title-text title orig-tonic tonic #t #t)))
-           (make-transposed-book melody-title melody tonic midi-output "midi")
-           (make-transposed-book harmony-title harmony tonic midi-output "midi")
-           (make-transposed-book etude-title #{<< $harmony $melody >>#} tonic midi-output "midi")
+           (make-transposed-book melody-title melody orig-tonic tonic midi-output "midi")
+           (make-transposed-book harmony-title harmony orig-tonic tonic midi-output "midi")
+           (make-transposed-book etude-title #{<< $harmony $melody >>#} orig-tonic tonic midi-output "midi")
       ))
     all-tonics)
 
   ; Create scores for the entire etude.
-  (make-book title #{<< $harmony $melody >>#} score-output "score")
-  )
+  (make-book title #{<< $harmony $melody >>#} score-output "score"))
