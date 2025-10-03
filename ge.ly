@@ -3,23 +3,91 @@
 \include "etude.ly"
 \include "roman-numerals.ly"
 
-melody = {
+common = {
   \key c \major
-  r4 r r r8 g
-  \acciaccatura d' e'8 e' e' e' e'4 g'
-  f'8. g'16 f'8 e' d'4 r8 g
-  d'8 d' d' d' d'4 c'8. d'16
-  e'2 r4 r8 g
+  \time 4/4
+}
 
-  e'8 e' e' e' e'4 g' % d->e
-  f'8. g'16 f'8 e' d'4 r8 g
-  d'4 d'8. r16 c' b a16 b8.
+interlude = \fixed c' {
+  d8 e4 g
+  f8 g f e d c \acciaccatura{b, c} b,8 a,8
+  \acciaccatura{g,} b,8 g \acciaccatura{b,} a, f \acciaccatura{a,} g, e f, d
+  c2 r4
+}
 
+melody = \fixed c' {
+  \common
+
+  % prelude
+  %1
+
+  % vocal
+
+  %4
+  r4 r r r8 g,
+  \acciaccatura{d} e8 e e e e4 g
+  f8. (g16 f8 e) d4 r8 g,
+  \acciaccatura{c} d d8 d d d d4 c8. d16
+  e'2 r4 r8 g,
+
+  %9
+  \acciaccatura{d} e8 e e e e4 g
+  f8. (g16 f8 e) d4 r8 g,
+  \acciaccatura{c} d4 d8. r16 c8 b, a,16 b,8.
   c2 r4 r8 c8
+
+  %13
+  \acciaccatura{g} a4 (a8) g8 f4 a8 r8
+  g8 (a) g (f) e4 g8 r
+  f8. (g16 f8) e8 d4 b,8 (b,)
+  c8 c d4 e r8 c
+
+  %17
+  \acciaccatura{g} a4 (a8) g8 f4 a8 r8
+  g8 (a) g (f) e4 (g8 r16 g)
+  fis8 (e) fis g a4 d8 r8
+  \acciaccatura{a} b4 (b8.) a16 g4 (f)
+
+  %21
+  \time 2/4
+  r4 r8 e
+  \time 4/4
+  e4 e8 e e4 g8 g
+  f8. (g16 f8) e8 d4 r8 g,
+  \acciaccatura{c} d8 d d d d d c (d)
+
+  %25
+  e2 r4 r8 g,
+  \acciaccatura{d} e4 e r r e e \acciaccatura{f} g
+  f8 (g) f e d4 r8 g,
+  \acciaccatura{c} d4 d8. r16 c8 b, a, (b,)
+
+  %29 repeat1
+  c4. 
+  \interlude
+  r8 c,
+
+  %33 repeat2
+  c2 r4 r8 g,
+  \acciaccatura{d} e8 e8. r16 r8 e e \acciaccatura{f} g
+  f8 (g) f e d4 r8 g,
+  \acciaccatura{1} d4 d8. r16 c8 b, a, (b,)
+
+  %37
+  c2 r4 r8 g,
+  \acciaccatura{d} e8 e8. r16 r8 e e \acciaccatura{f} g
+  f8 (g) f e d4 r8 g,
+  \acciaccatura{1} d4 d8. r16 c8 b, a, (b,)
+
+  %41
+  c4. 
+  \interlude
+  r4
 }
 
 harmony= \chords {
-  \key c \major
+  \common
+
   c1
   c2 e:m
   d2:m g
