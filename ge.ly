@@ -67,7 +67,7 @@ melody = \fixed c' {
     \alternative {
       \volta 1 {
         %29
-        c4. 
+        c4.
         \interlude
         r8 c,
       }
@@ -75,7 +75,7 @@ melody = \fixed c' {
       \volta 2 {
         %33
         c2 r4 r8 g,
-        \acciaccatura{d} e8 e8. r16 r8 e e \acciaccatura{f} g
+        \acciaccatura{d} e4 e8. r16 r8 e e \acciaccatura{f} g
         f8 (g) f e d4 r8 g,
         \acciaccatura{1} d4 d8. r16 c8 b, a, (b,)
       }
@@ -83,12 +83,12 @@ melody = \fixed c' {
 
     %37
     c2 r4 r8 g,
-    \acciaccatura{d} e8 e8. r16 r8 e e \acciaccatura{f} g
+    \acciaccatura{d} e4 e8. r16 r8 e e \acciaccatura{f} g
     f8 (g) f e d4 r8 g,
     \acciaccatura{1} d4 d8. r16 c8 b, a, (b,)
 
     %41
-    c4. 
+    c4.
     \interlude
     r4
   }
