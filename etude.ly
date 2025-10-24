@@ -27,7 +27,6 @@
         \context {
           \ChordNames
           chordNameLowercaseMinor = ##t
-          chordChanges = ##t
           \consists #romanNumeralChordEngraver
         }
       }
@@ -72,7 +71,11 @@
    (let ((book
            #{
              \book {
-               \header { title = $title }
+               \header {
+                 title = \markup {
+                   $title
+                 }
+               }
                \score { $music }
              }
            #})
