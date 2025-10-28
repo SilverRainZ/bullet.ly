@@ -6,9 +6,16 @@ Self-made LilyPond scores and reuse-able snippets.
 
 Visit https://silverrainz.me/p/ly for the engraved music.
 
-.. dropdown:: 罗大佑_歌.ly
+Songs
+=====
+
+.. dropdown:: 《歌（罗大佑）》
 
    .. lilyinclude:: ./罗大佑_歌.ly
+
+.. dropdown:: 《小星星（节选）》
+
+   .. lilyinclude:: ./吉他新思维/小星星.ly
 
 Snippets
 ========
