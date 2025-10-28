@@ -12,10 +12,12 @@ Songs
 .. dropdown:: 《歌（罗大佑）》
 
    .. lilyinclude:: ./罗大佑_歌.ly
+      :loop:
 
 .. dropdown:: 《小星星（节选）》
 
    .. lilyinclude:: ./吉他新思维/小星星.ly
+      :loop:
 
 Snippets
 ========
