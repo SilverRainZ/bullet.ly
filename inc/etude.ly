@@ -105,6 +105,10 @@
             title
             (string-append title " (" (string-join lst ", " 'infix) ")" )))))
 
+#(define music-empty? (define-scheme-function (music) (ly:music?)
+    "return #t when the given music expression is empty"
+    (equal? 0 (ly:moment-main (ly:music-length music)))))
+
 % Test
 % #(make-training-books "Etude" #{ \melody #} #{ \harmony #} #{ c #})
 % #(ly:message "~a" (make-title-text "foooo" #{ c #} #{ d #} #t #f))
@@ -131,9 +135,12 @@ make-etude = #(define-scheme-function
       (let ((melody-title (make-title-text title orig-tonic tonic #t #f))
             (harmony-title (make-title-text title orig-tonic tonic #f #t))
             (etude-title (make-title-text title orig-tonic tonic #t #t)))
-           (make-transposed-book melody-title melody orig-tonic tonic midi-output "midi")
-           (make-transposed-book harmony-title harmony orig-tonic tonic midi-output "midi")
-           (make-transposed-book etude-title #{<< $harmony $melody >>#} orig-tonic tonic midi-output "midi")
+           (if (not (music-empty? melody))
+             (make-transposed-book melody-title melody orig-tonic tonic midi-output "midi"))
+           (if (not (music-empty? harmony))
+             (make-transposed-book harmony-title harmony orig-tonic tonic midi-output "midi"))
+           (if (and (not (music-empty? melody)) (not (music-empty? harmony)))
+             (make-transposed-book etude-title #{<< $harmony $melody >>#} orig-tonic tonic midi-output "midi"))
       ))
     ALL-TONICS)
 
