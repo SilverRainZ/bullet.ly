@@ -2,7 +2,7 @@
 bullet.ly
 =========
 
-Self-made LilyPond scores and reuse-able snippets.
+Self-made LilyPond scores and useful scheme functions.
 
 Visit https://silverrainz.me/p/ly for the engraved music.
 
@@ -19,13 +19,13 @@ Songs
    .. lilyinclude:: ./吉他新思维/小星星.ly
       :loop:
 
-Snippets
-========
+Scheme Functions
+================
 
-``inc/roman-numerals.ly``
+``inc/roman-numerals.ly::romanNumeralChordEngraver``
    | Convert chord names to roman numerals
    | 将和弦名称转换为罗马数字（和弦级数）
 
-``inc/etude.ly``
+``inc/etude.ly::make-etude``
    | Generate melodies and harmonies in 12 keys for practice
    | 为曲子生成 12 个调的旋律、和声供练习使用
